@@ -2,5 +2,5 @@
 layout (location = 0) in vec4 position;
 void main()
 {
-	gl_Position = position;
+	gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0f);
 }
