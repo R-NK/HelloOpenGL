@@ -166,8 +166,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="point.frag" />
-    <None Include="point.vert">
+    <None Include="shaders\point.frag" />
+    <None Include="shaders\point.vert">
       <FileType>Document</FileType>
     </None>
   </ItemGroup>
