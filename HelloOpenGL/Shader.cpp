@@ -18,6 +18,9 @@ Shader::Shader(const GLchar * vertexPath, const GLchar * fragmentPath)
 	int_fast16_t success;
 	GLchar infoLog[512];
 
+	// 空のプログラムオブジェクトを作成する
+	ID = glCreateProgram();
+
 	if (vsrc != nullptr)
 	{
 		// バーテックスシェーダのシェーダオブジェクトを作成する
@@ -94,4 +97,24 @@ bool Shader::readShaderSource(const GLchar * path, std::string & buffer)
 	buffer = stringstream.str();
 
 	return true;
+}
+
+void Shader::use() const
+{
+	glUseProgram(ID);
+}
+
+void Shader::setAttributeValue(const std::string & name, bool value) const
+{
+	glUniform1i(glGetUniformLocation(ID, name.c_str()), static_cast<GLint>(value));
+}
+
+void Shader::setAttributeValue(const std::string & name, int value) const
+{
+	glUniform1i(glGetUniformLocation(ID, name.c_str()), value);
+}
+
+void Shader::setAttributeValue(const std::string & name, float value) const
+{
+	glUniform1f(glGetUniformLocation(ID, name.c_str()), value);
 }
