@@ -2,8 +2,11 @@
 out vec4 fragment;
 
 in vec3 vertexColor;
+in vec2 TexCord;
+
+uniform sampler2D ourTexture;
 
 void main()
 {
-	fragment = vec4(vertexColor, 1.0);
+	fragment = texture(ourTexture, TexCord);
 }
