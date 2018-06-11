@@ -63,5 +63,11 @@
     <Image Include="textures\container.jpg">
       <Filter>リソース ファイル\textures</Filter>
     </Image>
+    <Image Include="..\..\..\..\Pictures\Obo.jpg">
+      <Filter>リソース ファイル\textures</Filter>
+    </Image>
+    <Image Include="..\..\..\..\Pictures\T.png">
+      <Filter>リソース ファイル\textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>
