@@ -2,6 +2,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
+#include <GLFW/glfw3.h>
 
 enum Camera_Movement
 {
@@ -14,6 +15,10 @@ enum Camera_Movement
 class Camera
 {
 public:
+    //解像度
+    int_fast16_t screenWidth;
+    int_fast16_t screenHeight;
+
     // ワールド座標におけるカメラ位置
     glm::vec3 cameraPos = glm::vec3{ 0.0f, 0.0f, 3.0f };;
     // ワールド座標におけるカメラの向く位置
@@ -34,11 +39,19 @@ public:
     // マウス感度
     float sensitivity = 0.05f;
 
-    Camera();
+    // 移動速度
+    float movementSpeed = 1.5f;
+
+    Camera(const int_fast16_t screenWidth, const int_fast16_t screenHeight);
     ~Camera();
 
-    glm::mat4 GetViewMatrix();
+    glm::mat4 GetViewAndProjection();
+
     void ProsessKeyboard(Camera_Movement direction, float deltaTime);
+
+    void ProsessMouseCallback(double xpos, double ypos);
+
+    void ProsessScrollCallback(double xoffset, double yoffset);
 
 private:
     // コピー禁止
